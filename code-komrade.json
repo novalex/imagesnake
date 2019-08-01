@@ -1,0 +1,13 @@
+{
+	"files": [
+		{
+			"path": "style.scss",
+			"type": "style-sass",
+			"output": "style.css",
+			"options": {
+				"autocompile": true,
+				"autoprefixer": true
+			}
+		}
+	]
+}
