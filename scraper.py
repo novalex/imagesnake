@@ -56,7 +56,12 @@ if ( len(sys.argv) == 1 ):
 # Scrape images from URL.
 siteurl = sys.argv[1]
 sslctx = ssl._create_unverified_context()
-html = urlopen(siteurl, context=sslctx)
+try:
+	html = urlopen(siteurl, timeout=10, context=sslctx)
+except IOError as err:
+	print('[ERROR] Could not connect to URL:')
+	print(err)
+	raise SystemExit(0)
 bs = BeautifulSoup(html, 'html.parser')
 image_tags = bs.find_all('img', {
 	'src': re.compile('.jpe?g|png|gif')
